@@ -4,6 +4,7 @@
            id = document.querySelector(".product-variant-id");
           // if matched The “Soft Winter Jacket” product will also be automatically added to the cart 
           if(id.value == "45153724891417") {
+            console.log("matched");
             fetch('/cart/add.js', {
               method: 'POST',
               body: JSON.stringify(
