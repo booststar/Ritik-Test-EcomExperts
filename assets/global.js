@@ -830,8 +830,9 @@ class VariantSelects extends HTMLElement {
     }
   }
 
+  // function for updating variant images
   updateVariantImage() {
-    
+    // hide all images
     document.querySelectorAll("[my-thumbnail-color]").forEach((e)=>{
       e.style.display = "none";
     });
@@ -841,9 +842,11 @@ class VariantSelects extends HTMLElement {
     
     if(selected_variant == selected_variant) {
       
-      document.querySelectorAll("[my-thumbnail-color]").forEach((e)=>{
-      e.style.display = "block";
-    });
+      // Show images based on variant color
+
+      document.querySelectorAll(selected_attribute).forEach((e)=>{
+          e.style.display = "block";
+      });
     } 
   }
 
