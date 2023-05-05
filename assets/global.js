@@ -826,7 +826,28 @@ class VariantSelects extends HTMLElement {
       this.updateVariantInput();
       this.renderProductInfo();
       this.updateShareUrl();
+      this.updateVariantImage();
     }
+  }
+
+  updateVariantImage() {
+    
+    document.querySelectorAll("[my-thumbnail-color]").forEach((e)=>{
+      e.style.display = "none";
+    });
+    
+    var selected_variant = this.currentVariant.featured_media.alt;
+    var selected_attribute = '[my-thumbnail-color="' + selected_variant + '"]';
+    
+    if(selected_variant == selected_variant) {
+      
+      document.querySelectorAll("[my-thumbnail-color]").forEach((e)=>{
+      e.style.display = "block";
+    });
+      
+      document.querySelector(selected_attribute).style.display = "block";
+
+    } 
   }
 
   updateOptions() {
