@@ -844,9 +844,6 @@ class VariantSelects extends HTMLElement {
       document.querySelectorAll("[my-thumbnail-color]").forEach((e)=>{
       e.style.display = "block";
     });
-      
-      document.querySelector(selected_attribute).style.display = "block";
-
     } 
   }
 
