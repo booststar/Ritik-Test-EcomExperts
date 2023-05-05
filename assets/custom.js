@@ -41,6 +41,6 @@
   
 
 
-function start() {
-  return addItem();
+function start(id,q) {
+  return addItem(id,q);
 }
