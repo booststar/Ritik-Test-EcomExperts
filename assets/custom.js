@@ -22,8 +22,8 @@
             .then(function(data)
               {console.log(data)}).catch(error => console.error('Error:', error)); 
 }
+                        const lineItem = await addItem(45134163443993, 1);
+
           }
-        
-            const lineItem = await addItem(45134163443993, 1);
-            
+                    
         });
