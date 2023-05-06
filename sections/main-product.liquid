@@ -258,7 +258,11 @@
                   </button>
                 </quantity-input>
 
-                
+                {% comment %}
+                  =============================================
+                    Show message to users for additional items
+                  =============================================
+                {% endcomment %} 
                 {%  if product.metafields.custom.additional_product.value.selected_or_first_available_variant.id %}
                     {% assign addition_item_title = product.metafields.custom.additional_product.value.title %}
                     {% assign addition_with_item_title =  product.metafields.custom.additional_item_along_with.value.title %}
