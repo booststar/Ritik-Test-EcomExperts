@@ -257,6 +257,14 @@
                     {% render 'icon-plus' %}
                   </button>
                 </quantity-input>
+
+                
+                {%  if product.metafields.custom.additional_product.value.selected_or_first_available_variant.id %}
+                    {% assign addition_item_title = product.metafields.custom.additional_product.value.title %}
+                    {% assign addition_with_item_title =  product.metafields.custom.additional_item_along_with.value.title %}
+                <b>{{ addition_item_title }} Will add automatically in the cart if you buy <span style="color:green;">{{ addition_with_item_title }}</b>
+                {% endif %}
+            
                 <div class="quantity__rules caption no-js-hidden">
                   {%- if product.selected_or_first_available_variant.quantity_rule.increment > 1 -%}
                     <span class="divider">
