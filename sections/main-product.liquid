@@ -600,14 +600,12 @@
 {% endcomment %}                  
 
   <script>
-    document.querySelector('select[name = "options[Size]"]').options.forEach((e)=>{
     var default_variant = 45152045203737;  // We can also set the default varient using Metafield for every products 
     if(document.URL.includes(default_variant)){
       // already opened 
     }else{
       location.href = window.location.href.split('?')[0] +"?variant="+ default_variant;   
     }
-    });
   </script>
   <script type="application/ld+json">
     {
