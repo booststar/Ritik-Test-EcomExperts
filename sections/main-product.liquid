@@ -537,6 +537,66 @@
     endif
   -%}
 
+  {% comment %}
+    ========================================
+    Execute the code only if condition match
+    ========================================
+  {% endcomment %}
+  {%  if product.metafields.custom.additional_product.value.selected_or_first_available_variant.id and  product.metafields.custom.additional_item_along_with.value.id %}
+  {% assign addition_item_id = product.metafields.custom.additional_product.value.selected_or_first_available_variant.id %}
+  {% assign addition_with_item_id =  product.metafields.custom.additional_item_along_with.value.id %}
+<script>
+   document.querySelector(".productasas").addEventListener("click",()=>{
+     var current_id = document.querySelector(".product-variant-id").value;
+     var quantity__input = document.querySelector(".quantity__input").value;
+     
+       // if id matched with the “variant available in metafield”, then product will also be automatically added to the cart 
+       console.log(current_id);
+
+     if(current_id == {{ addition_with_item_id }}) { 
+      var formData = {
+     'items': [{
+      'id': {{ addition_with_item_id }},
+      'quantity': quantity__input
+      },
+      {
+      'id': {{ addition_item_id }},
+      'quantity': 1
+      }]
+    };
+    } else{
+
+     var formData = {
+     'items': [{
+      'id': current_id,
+      'quantity': quantity__input
+      }
+      ]
+    };
+    }
+    
+    fetch('/cart/add.js', {
+      method: 'POST',
+      body: JSON.stringify(formData),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      }
+      })
+      .then(function(response){ 
+      return response.json()
+      })
+      .then(function(data)
+      {
+       console.log(data)
+       location.href= shopUrl +"/cart";  
+      }).catch(error => console.error('Error:', error));  
+    
+    });
+</script>
+{% endif %} 
+
+  
+                  
   <script type="application/ld+json">
     {
       "@context": "http://schema.org/",
