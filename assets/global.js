@@ -852,6 +852,7 @@ class VariantSelects extends HTMLElement {
   }
 
   updateOptions() {
+    console.log("updateOptions");
     this.options = Array.from(this.querySelectorAll('select'), (select) => select.value);
   }
 
