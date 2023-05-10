@@ -602,8 +602,7 @@
   ==================================
   Open Unselected Variant Bydefault
   ==================================
-{% endcomment %}                  
-
+               
   <script>
     var default_variant = 45152045203737;  // We can also set the default varient using Metafield for every products 
     if(document.URL.includes(default_variant)){
@@ -612,6 +611,7 @@
       location.href = window.location.href.split('?')[0] +"?variant="+ default_variant;   
     }
   </script>
+ {% endcomment %}  
   <script type="application/ld+json">
     {
       "@context": "http://schema.org/",
