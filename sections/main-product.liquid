@@ -547,7 +547,9 @@
    document.querySelector(".productasas").addEventListener("click",()=>{
      var current_id = document.querySelector(".product-variant-id").value;
      var quantity__input = document.querySelector(".quantity__input").value;
-     
+     // Additional_variant from line item property 
+     var Additional_variant = document.querySelector("#Additional_variant").value;
+
        // if id matched with the “variant available in metafield”, then product will also be automatically added to the cart 
        console.log(current_id);
 
@@ -555,7 +557,10 @@
       var formData = {
      'items': [{
       'id': {{ addition_with_item_id }},
-      'quantity': quantity__input
+      'quantity': quantity__input,
+      'properties' : {
+       'Additional Item Id': Additional_variant
+      }
       },
       {
       'id': {{ addition_item_id }},
