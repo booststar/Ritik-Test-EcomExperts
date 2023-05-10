@@ -255,7 +255,7 @@
                         </button>
                       </quantity-input>
 
-                      <cart-remove-button
+                      <cart-remove-button  current-variant-id = "{{ item.variant.id }}" 
                         id="Remove-{{ item.index | plus: 1 }}"
                         data-index="{{ item.index | plus: 1 }}"
                       >
