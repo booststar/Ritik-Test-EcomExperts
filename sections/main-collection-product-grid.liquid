@@ -149,6 +149,11 @@
                 {%- if forloop.index > 2 -%}
                   {%- assign lazy_load = true -%}
                 {%- endif -%}
+                
+        {% comment %} Show products if it is not avaliable as bundle {% endcomment %}
+        {% for tag in product.tags %}
+            {% unless tag contains 'bundle' %}
+              
                 <li class="grid__item">
                   {% render 'card-product',
                     card_product: product,
@@ -161,6 +166,8 @@
                     section_id: section.id
                   %}
                 </li>
+              {% endunless %}
+          {% endfor %}
               {%- endfor -%}
             </ul>
 
