@@ -218,8 +218,7 @@
                     {%- case item.object_type -%}
                       {%- when 'product' -%}
                         {% for tag in item.tags %}
-{{ tag }}
-{% endfor %}              
+                          {% unless tag contains "bundle" %}
                         {%- capture product_settings -%}{%- if section.settings.product_show_vendor -%}vendor,{%- endif -%}title,price{%- endcapture -%}
                         {% render 'card-product',
                           card_product: item,
@@ -229,6 +228,8 @@
                           show_rating: section.settings.show_rating,
                           lazy_load: lazy_load
                         %}
+                          {% endunless %}   
+                        {% endfor %}              
                       {%- when 'article' -%}
                         {% render 'article-card',
                           article: item,
