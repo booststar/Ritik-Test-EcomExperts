@@ -214,11 +214,12 @@
                     {%- assign lazy_load = true -%}
                   {%- endif -%}
 
-                  <li class="grid__item">
+                  
                     {%- case item.object_type -%}
                       {%- when 'product' -%}
                         {% for tag in item.tags %}
                           {% unless tag contains "bundle" %}
+                            <li class="grid__item">
                         {%- capture product_settings -%}{%- if section.settings.product_show_vendor -%}vendor,{%- endif -%}title,price{%- endcapture -%}
                         {% render 'card-product',
                           card_product: item,
@@ -228,9 +229,11 @@
                           show_rating: section.settings.show_rating,
                           lazy_load: lazy_load
                         %}
+                          </li>
                           {% endunless %}   
                         {% endfor %}              
                       {%- when 'article' -%}
+                      <li class="grid__item">
                         {% render 'article-card',
                           article: item,
                           show_image: true,
@@ -240,7 +243,9 @@
                           media_aspect_ratio: 1,
                           lazy_load: lazy_load
                         %}
+                      </li>
                       {%- when 'page' -%}
+                      <li class="grid__item">
                         <div class="article-card-wrapper card-wrapper underline-links-hover">
                           <div class="card card--card card--text ratio color-{{ settings.blog_card_color_scheme }}" style="--ratio-percent: 100%;">
                             <div class="card__content">
@@ -257,8 +262,8 @@
                             </div>
                           </div>
                         </div>
+                      </li>
                     {%- endcase -%}
-                  </li>
                 {%- endfor -%}
               </ul>
               {%- if paginate.pages > 1 -%}
