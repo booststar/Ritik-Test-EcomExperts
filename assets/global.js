@@ -811,6 +811,7 @@ class VariantSelects extends HTMLElement {
     window.addEventListener("load", ()=> {
         this.querySelector('[name="options[Size]"]').value="Unselected";
         this.onVariantChange();
+        this.updateVariantImage();
     });
   }
   
