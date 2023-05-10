@@ -152,7 +152,7 @@
                 
         {% comment %} Show products if it is not avaliable as bundle {% endcomment %}
         {% for tag in product.tags %}
-            {% unless tag contains 'bundle' %}
+            {% unless tag contains "bundle" %}
               
                 <li class="grid__item">
                   {% render 'card-product',
