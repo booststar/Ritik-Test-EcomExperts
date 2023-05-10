@@ -809,7 +809,9 @@ class VariantSelects extends HTMLElement {
     this.addEventListener('change', this.onVariantChange);
     // once page load, Unselected variant will be selected  
     window.addEventListener("load", ()=> {
-        this.querySelector('[name="options[Size]"]').value="Unselected";
+        if(this.querySelector('[name="options[Size]"]').value!="Unselected"){
+          this.querySelector('[name="options[Size]"]').value="Unselected"
+        }
         this.onVariantChange();
         this.updateVariantImage();
     });
