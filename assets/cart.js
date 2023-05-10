@@ -2,13 +2,50 @@ class CartRemoveButton extends HTMLElement {
   constructor() {
     super();
 
-    this.addEventListener('click', (event) => {
-      event.preventDefault();
-      const cartItems = this.closest('cart-items') || this.closest('cart-drawer-items');
-      console.log(this.dataset.index);
-      cartItems.updateQuantity(this.dataset.index, 0);
+      this.addEventListener('click', (event) => {
+       event.preventDefault();
+       const cartItems = this.closest('cart-items') || this.closest('cart-drawer-items');
+       var customcart = false;
+       this.parentNode.parentNode.parentNode.querySelectorAll(".product-option").forEach(items=>{
+         if(items.hasAttribute("additional_variant")) {
+          var varianttt = parseInt(items.getAttribute("additional_variant"));
+          // if there is line item then continue with custom cart delete  
+          this.deleteAdditionalItem(parseInt(this.getAttribute("current-variant-id")), varianttt );
+          customcart = true;
+       }
+    });
+        
+    if(customcart==false) { 
+    // if there is no line item then continue with default cart delete  
+    cartItems.updateQuantity(this.dataset.index, 0);   
+    }
     });
   }
+
+  // Custom Delete Variant
+    deleteAdditionalItem(currentVariantId,varianttt){ 
+       var formData = {     
+       updates:{
+        [varianttt] : 0,
+        [currentVariantId] : 0 
+       }
+    };
+    // console.log(formData);
+    fetch(shopUrl+"/cart/update.js", {
+      method: 'POST',
+      body: JSON.stringify(formData),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    }
+    })
+    .then(function(response){ 
+      return response.json()})
+    .then(function(data)
+    {
+      // console.log(data)
+      location.reload();
+    }).catch(error => console.error('Error:', error));     
+    }
 }
 
 customElements.define('cart-remove-button', CartRemoveButton);
