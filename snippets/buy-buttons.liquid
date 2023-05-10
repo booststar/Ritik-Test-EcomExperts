@@ -72,7 +72,9 @@
 
            {%  if product.metafields.custom.additional_product.value.selected_or_first_available_variant.id and  product.metafields.custom.additional_item_along_with.value.id %}
             {% assign addition_item_id = product.metafields.custom.additional_product.value.selected_or_first_available_variant.id %}
-            <input type="hidden" value="{{ addition_item_id }}" class="additional_item_id">
+             <input type="hidden" value="{{ addition_item_id }}" class="additional_item_id">
+            <!-- Pass Line Item As a Additional Variant Id  -->
+             <input id="Additional_variant" type="hidden" name="properties[Additional Variant]" value="{{ addition_item_id }}">
             <button type="button" class="productasas  button button--full-width button--secondary">Add to cart</button>
           {% else %}
              <button
