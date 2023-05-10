@@ -807,8 +807,13 @@ class VariantSelects extends HTMLElement {
   constructor() {
     super();
     this.addEventListener('change', this.onVariantChange);
+    // once page load, Unselected variant will be selected  
+    window.addEventListener("load", ()=> {
+        this.querySelector('[name="options[Size]"]').value="Unselected";
+        this.onVariantChange();
+    });
   }
-
+  
   onVariantChange() {
     console.log("changed");
     this.updateOptions();
