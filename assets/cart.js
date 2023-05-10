@@ -30,7 +30,7 @@ class CartRemoveButton extends HTMLElement {
         [currentVariantId] : 0 
        }
     };
-     console.log(formData);
+     //console.log(formData);
     fetch(shopUrl+"/cart/update.js", {
       method: 'POST',
       body: JSON.stringify(formData),
@@ -42,7 +42,7 @@ class CartRemoveButton extends HTMLElement {
       return response.json()})
     .then(function(data)
     {
-       console.log(data)
+       //console.log(data)
       location.reload();
     }).catch(error => console.error('Error:', error));     
     }
@@ -130,7 +130,7 @@ class CartItems extends HTMLElement {
       sections: this.getSectionsToRender().map((section) => section.section),
       sections_url: window.location.pathname
     });
-      console.log( window.location.pathname);
+     // console.log( window.location.pathname);
     fetch(`${routes.cart_change_url}`, { ...fetchConfig(), ...{ body } })
       .then((response) => {
         return response.text();
