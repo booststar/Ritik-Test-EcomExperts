@@ -816,7 +816,7 @@ class VariantSelects extends HTMLElement {
   }
   
   onVariantChange() {
-    console.log("changed");
+    //console.log("changed");
     this.updateOptions();
     this.updateMasterId();
     this.toggleAddButton(true, '', false);
@@ -858,7 +858,7 @@ class VariantSelects extends HTMLElement {
   }
 
   updateOptions() {
-    console.log("updateOptions");
+    //console.log("updateOptions");
     this.options = Array.from(this.querySelectorAll('select'), (select) => select.value);
   }
 
