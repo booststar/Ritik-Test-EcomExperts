@@ -30,7 +30,7 @@ class CartRemoveButton extends HTMLElement {
         [currentVariantId] : 0 
        }
     };
-    // console.log(formData);
+     console.log(formData);
     fetch(shopUrl+"/cart/update.js", {
       method: 'POST',
       body: JSON.stringify(formData),
