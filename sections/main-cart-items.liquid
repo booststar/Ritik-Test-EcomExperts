@@ -133,7 +133,7 @@
                         {%- for property in item.properties -%}
                           {%- assign property_first_char = property.first | slice: 0 -%}
                           {%- if property.last != blank and property_first_char != '_' -%}
-                            <div class="product-option">
+                            <div class="product-option"  Additional_variant= "{{ property.last }}">
                               <dt>{{ property.first }}:</dt>
                               <dd>
                                 {%- if property.last contains '/uploads/' -%}
